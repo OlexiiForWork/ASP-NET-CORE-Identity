@@ -14,6 +14,13 @@ namespace Base
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("CookieAuth")
+                    .AddCookie("CookieAuth", config =>
+                   {
+                       config.Cookie.Name = "Oleksii.Cookie";
+                       config.LoginPath = "/Home/Authenticate";
+                   });
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -25,12 +32,14 @@ namespace Base
 
             app.UseRouting();
 
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

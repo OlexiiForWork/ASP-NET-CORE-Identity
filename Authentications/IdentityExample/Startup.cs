@@ -1,4 +1,4 @@
-using IdentityExample.Data;
+﻿using IdentityExample.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,19 +11,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Base
+namespace IdentityExample
 {
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(config=>{
+            services.AddDbContext<AppDbContext>(config =>
+            {
                 config.UseInMemoryDatabase("Memory");
             });
-
-            services.AddIdentity<IdentityUser,IdentityRole>()
-                //.AddEntityFrameworkStores<AppDbContext>()
+            //Add identity registers the services
+            services.AddIdentity<IdentityUser, IdentityRole>(config =>
+            {
+                //Условия для валидации пароля
+                config.Password.RequiredLength = 4;
+                config.Password.RequireDigit = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireUppercase = false;
+            })
+                .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.Cookie.Name = "Oleksii.Cookie.IdentityExample";
+                config.LoginPath = "/Home/Login";
+            });
             //services.AddAuthentication("CookieAuth")
             //        .AddCookie("CookieAuth", config =>
             //        {

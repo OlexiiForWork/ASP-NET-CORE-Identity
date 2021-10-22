@@ -22,18 +22,31 @@ namespace Base.Controllers
             return View();
         }
 
+        [Authorize(Policy = "Claim.DoB")]
+        public IActionResult SecretPolicy()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult SecretRole()
+        {
+            return View();
+        }
+
         public IActionResult Authenticate()
         {
             var grandmaClaims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name,"Bob"),
                 new Claim(ClaimTypes.Email, "Bob@fmail.com"),
+                new Claim(ClaimTypes.DateOfBirth, "11/10/2016"),//SecretPolicy()
+                new Claim(ClaimTypes.Role, "Admin"),//SecretRole()
                 new Claim("Grandma.Says", "Bob@fmail.com")
             };
 
             var licenseClaims = new List<Claim>()
             {
-
                 new Claim(ClaimTypes.Email, "Bob K Foo"),
                 new Claim("DrivingLicense", "A+")
             };

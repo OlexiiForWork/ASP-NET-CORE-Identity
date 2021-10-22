@@ -49,7 +49,7 @@ namespace IdentityExample
                 config.Cookie.Name = "Oleksii.Cookie.IdentityExample";
                 config.LoginPath = "/Home/Login";
             });
-
+            //Отправка авто подтверждения письма
             services.AddMailKit(config =>  { config.UseMailKit(_config.GetSection("Email").Get<MailKitOptions>()); });
             //services.AddAuthentication("CookieAuth")
             //        .AddCookie("CookieAuth", config =>

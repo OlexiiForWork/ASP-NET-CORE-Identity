@@ -51,15 +51,15 @@ namespace Base
                 //});
             });
 
-            services.AddSingleton<IAuthorizationPolicyProvider,CustomAuthorizationPolicyProvider>();
+            services.AddSingleton<IAuthorizationPolicyProvider, CustomAuthorizationPolicyProvider>();
             services.AddScoped<IAuthorizationHandler, SecurityLevelHandler>();
-            
+
             //Для поверки Claim из шага 2.1 и 2.2 и если нет то запрет доступа...
             services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
             //Для поверки Claim из шага 2.1 и 2.2 и если нет то запрет доступа...
             services.AddScoped<IAuthorizationHandler, CookieJarAuthorizationHandler>();
 
-            services.AddScoped< IClaimsTransformation, ClaimsTransformation>();
+            services.AddScoped<IClaimsTransformation, ClaimsTransformation>();
 
             services.AddControllersWithViews(config =>
             {
@@ -71,6 +71,15 @@ namespace Base
                 // Фильтр глобальный на все контролеры кроме помеченных как AllowAnonymous
                 //config.Filters.Add(new AuthorizeFilter(defaultAuthPolicy));
             });
+            //Добавление RazorPages
+            services.AddRazorPages()
+                .AddRazorPagesOptions(config =>
+                {
+                    config.Conventions.AuthorizePage("/Razor/Secured");
+                    config.Conventions.AuthorizePage("/Razor/Policy", DynamicPolicies.Rank);//непонятно почему не работает
+                    config.Conventions.AuthorizeFolder("/RazorSecured");
+                    config.Conventions.AllowAnonymousToPage("/RazorSecured/Anon");
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -91,6 +100,7 @@ namespace Base
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
     }

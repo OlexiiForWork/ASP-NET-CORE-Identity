@@ -36,7 +36,7 @@ namespace Base.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "AdminTwo")]
         public IActionResult SecretRole()
         {
             return View("Secret");
@@ -63,7 +63,7 @@ namespace Base.Controllers
                 new Claim(ClaimTypes.Name,"Bob"),
                 new Claim(ClaimTypes.Email, "Bob@fmail.com"),
                 new Claim(ClaimTypes.DateOfBirth, "11/10/2016"),//SecretPolicy()
-                new Claim(ClaimTypes.Role, "Admin"),//SecretRole()
+                new Claim(ClaimTypes.Role, "AdminTwo"),//SecretRole()
                 new Claim(DynamicPolicies.SecurityLevel,"7"),
                 new Claim("Grandma.Says", "Bob@fmail.com")
             };

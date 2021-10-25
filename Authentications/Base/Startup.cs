@@ -1,7 +1,12 @@
 ﻿using Base.AuthorizationRequirements;
+using Base.Controllers;
+using Base.CustomPolicyProvider;
+using Base.Transformer;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
@@ -29,13 +34,14 @@ namespace Base
                 //        .RequireClaim(ClaimTypes.DateOfBirth)
                 //        .Build();
                 //config.DefaultPolicy = defaultAuthPolicy;
-                
+
                 //2.1) Дополнительные политики проверки 
                 //config.AddPolicy("Claim.DoB",policyBuilder => {
                 //    policyBuilder.RequireClaim(ClaimTypes.DateOfBirth);
                 //});
                 //2.2) Другой вариант построения через рашыряющий метод
-                config.AddPolicy("Claim.DoB", policyBuilder => {
+                config.AddPolicy("Claim.DoB", policyBuilder =>
+                {
                     policyBuilder.RequireCustomClaim(ClaimTypes.DateOfBirth);
                 });
                 //2.3) Дополнительные политики проверки взамен ролей можно использовать
@@ -45,9 +51,26 @@ namespace Base
                 //});
             });
 
+            services.AddSingleton<IAuthorizationPolicyProvider,CustomAuthorizationPolicyProvider>();
+            services.AddScoped<IAuthorizationHandler, SecurityLevelHandler>();
+            
+            //Для поверки Claim из шага 2.1 и 2.2 и если нет то запрет доступа...
             services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
+            //Для поверки Claim из шага 2.1 и 2.2 и если нет то запрет доступа...
+            services.AddScoped<IAuthorizationHandler, CookieJarAuthorizationHandler>();
 
-            services.AddControllersWithViews();
+            services.AddScoped< IClaimsTransformation, ClaimsTransformation>();
+
+            services.AddControllersWithViews(config =>
+            {
+                //1) Добавление глобальной проверки что все имеют Юзера
+                var defaultAuthBuilder = new AuthorizationPolicyBuilder();
+                var defaultAuthPolicy = defaultAuthBuilder
+                        .RequireAuthenticatedUser()
+                        .Build();
+                // Фильтр глобальный на все контролеры кроме помеченных как AllowAnonymous
+                //config.Filters.Add(new AuthorizeFilter(defaultAuthPolicy));
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

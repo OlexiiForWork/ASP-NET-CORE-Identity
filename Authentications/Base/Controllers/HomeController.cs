@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Base.CustomPolicyProvider;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,13 @@ namespace Base.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IAuthorizationService _authorizationService;
+
+        public HomeController(IAuthorizationService authorizationService)
+        {
+            _authorizationService = authorizationService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -31,9 +39,23 @@ namespace Base.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult SecretRole()
         {
+            return View("Secret");
+        }
+
+
+        [SecurityLevel(5)]
+        public IActionResult SecretLevel()
+        {
+            return View("Secret");
+        }
+
+        [SecurityLevel(10)]
+        public IActionResult SecretHigherLevel()
+        {
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Authenticate()
         {
             var grandmaClaims = new List<Claim>()
@@ -42,6 +64,7 @@ namespace Base.Controllers
                 new Claim(ClaimTypes.Email, "Bob@fmail.com"),
                 new Claim(ClaimTypes.DateOfBirth, "11/10/2016"),//SecretPolicy()
                 new Claim(ClaimTypes.Role, "Admin"),//SecretRole()
+                new Claim(DynamicPolicies.SecurityLevel,"7"),
                 new Claim("Grandma.Says", "Bob@fmail.com")
             };
 
@@ -58,6 +81,21 @@ namespace Base.Controllers
             HttpContext.SignInAsync(userPrincipal);
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> DoStuff(/*DependencyInjection*/[FromServices] IAuthorizationService authorizationService)
+        {
+            var builder = new AuthorizationPolicyBuilder("Schema");
+            var customPolicy = builder.RequireClaim("Hello").Build();
+            //var authResult = await _authorizationService.AuthorizeAsync(User, customPolicy);
+            //При взятии переменой из араметра функции DependencyInjection
+            var authResult = await authorizationService.AuthorizeAsync(User, customPolicy);
+            if (authResult.Succeeded)
+            {
+                return View("Index");
+            }
+
+            return View("Index");
         }
     }
 }

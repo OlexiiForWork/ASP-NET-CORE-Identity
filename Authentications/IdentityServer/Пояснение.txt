@@ -1,0 +1,9 @@
+﻿http://localhost:50141/.well-known/openid-configuration - Путь для получения информации по OpenId
+
+tempkey.jwk - автоматически созданый файл добавленный  .AddDeveloperSigningCredential(); 
+
+
+Документацыя
+IdentityServer4 docs: http://docs.identityserver.io/en/latest/
+OAauth Specification: https://tools.ietf.org/html/rfc6749
+OIDC Specifications: https://openid.net/specs/openid-conne

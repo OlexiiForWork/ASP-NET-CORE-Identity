@@ -26,17 +26,17 @@ namespace MvcClient.Controllers
         [Authorize]
         public async Task<IActionResult> Secret()
         {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var idToken = await HttpContext.GetTokenAsync("id_token");
-            var refreshToken = await HttpContext.GetTokenAsync("refresh_token");
+            //var accessToken = await HttpContext.GetTokenAsync("access_token");
+            //var idToken = await HttpContext.GetTokenAsync("id_token");
+            //var refreshToken = await HttpContext.GetTokenAsync("refresh_token");
 
-            var claims = User.Claims.ToList();
-            var _accessToken = new JwtSecurityTokenHandler().ReadJwtToken(accessToken);
-            var _idToken = new JwtSecurityTokenHandler().ReadJwtToken(idToken);
+            //var claims = User.Claims.ToList();
+            //var _accessToken = new JwtSecurityTokenHandler().ReadJwtToken(accessToken);
+            //var _idToken = new JwtSecurityTokenHandler().ReadJwtToken(idToken);
 
-            var result = await GetSecret(accessToken);
+            //var result = await GetSecret(accessToken);
 
-            await RefreshAccessToken();
+            //await RefreshAccessToken();
 
             return View();
         }

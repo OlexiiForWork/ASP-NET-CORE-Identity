@@ -43,7 +43,7 @@ namespace IdentityServer
                     ClientId = "client_id",
                     ClientSecrets = { new Secret("client_secret".ToSha256()) },
 
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,//это машина к машыне
 
                     AllowedScopes = { 
                            "ApiOne" 
@@ -54,8 +54,8 @@ namespace IdentityServer
                     ClientId = "client_id_mvc",
                     ClientSecrets = { new Secret("client_secret_mvc".ToSha256()) },
 
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequirePkce = true,
+                    AllowedGrantTypes = GrantTypes.Code,//юзер участвует в комуникации
+                    //RequirePkce = true,
 
                     RedirectUris = { "https://localhost:44322/signin-oidc" },
                     //PostLogoutRedirectUris = { "https://localhost:44322/Home/Index" },
@@ -71,7 +71,7 @@ namespace IdentityServer
                     // puts all the claims in the id token
                     //AlwaysIncludeUserClaimsInIdToken = true,
                     //AllowOfflineAccess = true,
-                    //RequireConsent = false,
+                    RequireConsent = false,//это для добавления какихто данных с фейсбука (нужно только для участия узера в true)
                 },
             };
     }

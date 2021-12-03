@@ -31,7 +31,7 @@ namespace IdentityServer
                 config.Password.RequireDigit = false;
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireUppercase = false;
-                config.SignIn.RequireConfirmedEmail = true;
+                config.SignIn.RequireConfirmedEmail = false;
             })
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
@@ -44,10 +44,11 @@ namespace IdentityServer
             });
 
             services.AddIdentityServer()
-                    //.AddInMemoryApiResources(Configuration.GetApis())
-                    .AddInMemoryClients(Configuration.GetClients())
-                    .AddInMemoryApiScopes(Configuration.GetScopes())
-                    .AddDeveloperSigningCredential();
+                .AddAspNetIdentity<IdentityUser>()
+                //.AddInMemoryApiResources(Configuration.GetApis())
+                .AddInMemoryClients(Configuration.GetClients())
+                .AddInMemoryApiScopes(Configuration.GetScopes())
+                .AddDeveloperSigningCredential();
 
             services.AddControllersWithViews();
         }

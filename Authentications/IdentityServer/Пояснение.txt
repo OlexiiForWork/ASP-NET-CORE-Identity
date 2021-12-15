@@ -7,3 +7,16 @@ tempkey.jwk - автоматически созданый файл добавл�
 IdentityServer4 docs: http://docs.identityserver.io/en/latest/
 OAauth Specification: https://tools.ietf.org/html/rfc6749
 OIDC Specifications: https://openid.net/specs/openid-conne
+
+Отличия с видио-  "ASP.NET Core 3 - IdentityServer4 - Ep.12 Cookies, id_token, access_token, Claims"
+
+                .AddInMemoryApiResources(Configuration.GetApis())  [3]
+                .AddInMemoryClients(Configuration.GetClients())    [2]
+                .AddInMemoryApiScopes(Configuration.GetScopes())   [1]
+            [1] - определяем все Scopes с каторыми работает  IdentityServer
+                  а также добавляем Claims в access_token
+            [2] - описываем клиента Client и его разрешоные Scopes
+            [3] - Делаем привязку Scopes к ресурсам(Audience) это для Api без участия пользователя для access_token
+                new ApiResource("ApiOne"/*Audience имя ресурса в  */) { 
+                    Scopes = new [] { "ApiOneScopes" } //Добавлен для доп проверки
+                },

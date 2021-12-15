@@ -30,7 +30,7 @@ namespace ApiTwo.Controllers
                     ClientId = "client_id",
                     ClientSecret = "client_secret",
                     
-                    Scope = "ApiOne",
+                    Scope = "ApiOneScopes",
                 });
 
             //retrieve secret data

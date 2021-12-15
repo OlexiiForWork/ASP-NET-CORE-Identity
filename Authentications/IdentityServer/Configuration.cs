@@ -8,33 +8,36 @@ namespace IdentityServer
     public static class Configuration
     {
         public static IEnumerable<IdentityResource> GetIdentityResources() =>
-            new List<IdentityResource>
+            new List<IdentityResource>//Добавление до идентити токена
             {
                 new IdentityResources.OpenId(),
-                //new IdentityResources.Profile(),
-                //new IdentityResource
-                //{
-                //    Name = "rc.scope",
-                //    UserClaims =
-                //    {
-                //        "rc.garndma"
-                //    }
-                //}
+                new IdentityResources.Profile(),
+                new IdentityResource
+                {
+                    Name = "rc.scope",
+                    UserClaims =
+                    {
+                        "rc.garndma"
+                    }
+                }
             };
         public static IEnumerable<ApiScope> GetScopes() =>
                 new List<ApiScope> {
-                        new ApiScope("ApiOne"),//Это тоже добавлено для минимальной проверки
+                        new ApiScope("ApiOneScopes"),//Это тоже добавлено для минимальной проверки
+                        new ApiScope("ApiTwoScopes", new string[] { "rc.api.garndma" }),//Это тоже добавлено для минимальной проверки
                         new ApiScope(IdentityServerConstants.StandardScopes.OpenId),//Это тоже добавлено для минимальной проверки
                         new ApiScope(IdentityServerConstants.StandardScopes.Profile),//Это тоже добавлено для минимальной проверки
-                       
+                        new ApiScope("rc.scope",new List<string> {"rc.garndma"}),//Это тоже добавлено для минимальной проверки
                 //new ApiResource("ApiTwo"),
                 };
         public static IEnumerable<ApiResource> GetApis() =>
-            new List<ApiResource> {
-                new ApiResource("ApiOne") { 
-                    Scopes = new [] { "ApiOne" } //Добавлен для доп проверки
+            new List<ApiResource> {//добавление к AcssesToken
+                new ApiResource("ApiOne"/*Audience имя ресурса в  */) { 
+                    Scopes = new [] { "ApiOneScopes" } //Добавлен для доп проверки
                 },
-                new ApiResource("ApiTwo"),
+                new ApiResource("ApiTwo"){
+                    Scopes = new [] { "ApiTwoScopes" } //Добавлен для доп проверки
+                },
             };
 
         public static IEnumerable<Client> GetClients() =>
@@ -45,8 +48,8 @@ namespace IdentityServer
 
                     AllowedGrantTypes = GrantTypes.ClientCredentials,//это машина к машыне
 
-                    AllowedScopes = { 
-                           "ApiOne" 
+                    AllowedScopes = {
+                           "ApiOneScopes" 
                        // , "ApiTwo" 
                     }
                 },
@@ -61,15 +64,16 @@ namespace IdentityServer
                     //PostLogoutRedirectUris = { "https://localhost:44322/Home/Index" },
 
                     AllowedScopes = {
-                        "ApiOne",
-                        "ApiTwo",
+                        "ApiOneScopes",
+                        "ApiTwoScopes",
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        //"rc.scope",
+                        "rc.scope",
                     },
 
                     // puts all the claims in the id token
-                    //AlwaysIncludeUserClaimsInIdToken = true,
+                    //AlwaysSendClientClaims = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,//Взять клеймы и включить в IdToken
                     //AllowOfflineAccess = true,
                     RequireConsent = false,//это для добавления какихто данных с фейсбука (нужно только для участия узера в true)
                 },

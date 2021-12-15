@@ -1,4 +1,4 @@
-using IdentityServer.Data;
+﻿using IdentityServer.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -45,7 +45,8 @@ namespace IdentityServer
 
             services.AddIdentityServer()
                 .AddAspNetIdentity<IdentityUser>()
-                //.AddInMemoryApiResources(Configuration.GetApis())
+                //.AddInMemoryIdentityResources(Configuration.GetIdentityResources())//КОГДА ДОБАВЛЯЮ КАКИЕТО ПРОБЛЕМЫ
+                .AddInMemoryApiResources(Configuration.GetApis())
                 .AddInMemoryClients(Configuration.GetClients())
                 .AddInMemoryApiScopes(Configuration.GetScopes())
                 .AddDeveloperSigningCredential();

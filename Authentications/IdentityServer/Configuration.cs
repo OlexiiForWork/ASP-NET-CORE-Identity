@@ -74,7 +74,7 @@ namespace IdentityServer
                     // puts all the claims in the id token
                     //AlwaysSendClientClaims = true,
                     AlwaysIncludeUserClaimsInIdToken = true,//Взять клеймы и включить в IdToken
-                    //AllowOfflineAccess = true,
+                    AllowOfflineAccess = true,
                     RequireConsent = false,//это для добавления какихто данных с фейсбука (нужно только для участия узера в true)
                 },
             };

@@ -36,7 +36,7 @@ namespace MvcClient.Controllers
 
             var result = await GetSecret(accessToken);
 
-            //await RefreshAccessToken();
+            await RefreshAccessToken();
 
             return View();
         }
@@ -62,7 +62,7 @@ namespace MvcClient.Controllers
         private async Task RefreshAccessToken()
         {
             var serverClient = _httpClientFactory.CreateClient();
-            var discoveryDocument = await serverClient.GetDiscoveryDocumentAsync("http://localhost:50141");
+            var discoveryDocument = await serverClient.GetDiscoveryDocumentAsync("https://localhost:44386");
 
             var accessToken = await HttpContext.GetTokenAsync("access_token");
             var idToken = await HttpContext.GetTokenAsync("id_token");

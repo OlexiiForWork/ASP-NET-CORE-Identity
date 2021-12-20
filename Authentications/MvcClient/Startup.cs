@@ -44,7 +44,7 @@ namespace MvcClient
                     config.Scope.Add("rc.scope");
                     config.Scope.Add("ApiOneScopes");
                     config.Scope.Add("ApiTwoScopes");
-                    //config.Scope.Add("offline_access");
+                    config.Scope.Add("offline_access");//Для рефреш токена...
 
                 });
 

@@ -77,6 +77,29 @@ namespace IdentityServer
                     AllowOfflineAccess = true,
                     RequireConsent = false,//это для добавления какихто данных с фейсбука (нужно только для участия узера в true)
                 },
+                new Client {
+                    ClientId = "client_id_js",
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+
+                    RedirectUris = { "https://localhost:44310/home/signin" },
+                    PostLogoutRedirectUris = { "https://localhost:44310/Home/Index" },
+                    AllowedCorsOrigins = { "https://localhost:44310" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        "ApiOneScopes",
+                        "ApiTwoScopes",
+                        "rc.scope",
+                    },
+
+                    AccessTokenLifetime = 1,
+
+                    AllowAccessTokensViaBrowser = true,//Для доступа с помощью javaScript
+                    RequireConsent = false,
+                },
             };
     }
 }

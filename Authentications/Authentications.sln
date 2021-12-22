@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiOne", "ApiOne\ApiOne.csproj", "{24FAECBB-8272-499F-A600-5371849A468F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavascriptClient", "JavascriptClient\JavascriptClient.csproj", "{3B403953-652F-4432-B7FC-C85FD91B1893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{24FAECBB-8272-499F-A600-5371849A468F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24FAECBB-8272-499F-A600-5371849A468F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24FAECBB-8272-499F-A600-5371849A468F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B403953-652F-4432-B7FC-C85FD91B1893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B403953-652F-4432-B7FC-C85FD91B1893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B403953-652F-4432-B7FC-C85FD91B1893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B403953-652F-4432-B7FC-C85FD91B1893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{C39624F4-CDD9-49C2-B5F7-61410E3D7C03} = {7B498546-CDE6-4BDA-AE84-BF2920AD637A}
 		{7540AC0A-56A2-4632-918F-13A00F375F82} = {7B498546-CDE6-4BDA-AE84-BF2920AD637A}
 		{24FAECBB-8272-499F-A600-5371849A468F} = {7B498546-CDE6-4BDA-AE84-BF2920AD637A}
+		{3B403953-652F-4432-B7FC-C85FD91B1893} = {7B498546-CDE6-4BDA-AE84-BF2920AD637A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E5CCBA6-91C8-4D51-BA51-C9E427FE3702}

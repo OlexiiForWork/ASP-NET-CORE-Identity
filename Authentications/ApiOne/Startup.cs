@@ -19,11 +19,11 @@ namespace ApiOne
                     config.RequireHttpsMetadata = false;
                 });
 
-            //services.AddCors(confg =>
-            //    confg.AddPolicy("AllowAll",
-            //        p => p.AllowAnyOrigin()
-            //            .AllowAnyMethod()
-            //            .AllowAnyHeader()));
+            services.AddCors(confg =>
+                confg.AddPolicy("AllowAll",
+                    p => p.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()));
 
             services.AddControllers();
         }
@@ -35,7 +35,7 @@ namespace ApiOne
                 app.UseDeveloperExceptionPage();
             }
             
-            //app.UseCors("AllowAll");
+            app.UseCors("AllowAll");
 
             app.UseRouting();
 

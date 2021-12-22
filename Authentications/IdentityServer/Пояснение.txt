@@ -20,3 +20,5 @@ OIDC Specifications: https://openid.net/specs/openid-connect-core-1_0.html
                 new ApiResource("ApiOne"/*Audience имя ресурса в  */) { 
                     Scopes = new [] { "ApiOneScopes" } //Добавлен для доп проверки
                 },
+
+JavascriptClient 14-15 серия

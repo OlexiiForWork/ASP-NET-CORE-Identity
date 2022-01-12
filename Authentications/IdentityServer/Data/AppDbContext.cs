@@ -11,5 +11,11 @@ namespace IdentityServer.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.HasDefaultSchema("Identity");//Нужно если переопределена схема
+            base.OnModelCreating(builder);
+        }
     }
 }

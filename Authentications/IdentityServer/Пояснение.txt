@@ -22,3 +22,71 @@ OIDC Specifications: https://openid.net/specs/openid-connect-core-1_0.html
                 },
 
 JavascriptClient 14-15 серия
+
+    IdentityServer4 Version="4.1.2" 
+    IdentityServer4.AspNetIdentity Version="4.1.2" 
+    IdentityServer4.EntityFramework Version="4.1.2" 
+    Microsoft.AspNetCore.Identity.EntityFrameworkCore Version="5.0.12" 
+    Microsoft.EntityFrameworkCore" Version="5.0.12" 
+    Microsoft.EntityFrameworkCore.InMemory Version="5.0.12" -> Для хранения данных в памяти...
+    Npgsql.EntityFrameworkCore.PostgreSQL Version="5.0.10" -> Провайдер для постгрейс SQl
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<     [2] - ДОБАВЛЕНИЕ МИГРАЦИИ!!!     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2.1)-----------------------------------------------------------
+            services.AddDbContext<AppDbContext>(config =>
+            {
+                config.UseNpgsql(connectionPostgresString);//Для PostgresSQL
+                //config.UseSqlServer(connectionString);//Для MsSQL
+                //config.UseInMemoryDatabase("Memory"); Заменить для подключения действующей БД....
+            });
+
+2.2)-----------------------------------------------------------
+            var assembly = typeof(Startup).Assembly.GetName().Name;
+            services.AddIdentityServer()
+                .AddAspNetIdentity<IdentityUser>()
+                //2.2.1 
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = b => b.UseNpgsql(connectionPostgresString,
+                        sql => sql.MigrationsAssembly(assembly));
+                })
+                //2.2.2 
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = b => b.UseNpgsql(connectionPostgresString,
+                        sql => sql.MigrationsAssembly(assembly));
+                })
+                //или
+                ////.AddInMemoryIdentityResources(Configuration.GetIdentityResources())//КОГДА ДОБАВЛЯЮ КАКИЕТО ПРОБЛЕМЫ
+                //.AddInMemoryApiResources(Configuration.GetApis())
+                //.AddInMemoryClients(Configuration.GetClients())
+                //.AddInMemoryApiScopes(Configuration.GetScopes())
+                .AddDeveloperSigningCredential();
+
+    //2.2.1 - ConfigurationDbContext Предназначен для добавления Resources, Scopes, Clients
+    //2.2.1 - PersistedGrantDbContext Предназначен для хранения токенов рефреш токенов...
+    
+    !!!!!!!!!!   При работе с схемами нужно добавить во все таблицы схемы и <Контекст>ModelSnapshot И в файл миграции   !!!!!!!!!!!
+    !!!!!!!!!!    migrationBuilder.EnsureSchema("Identity");   Проверка на существование схемы и если её нет создать    !!!!!!!!!!!
+
+    !!!!!!!!!!
+    Также нужно переопределить метод в контексте AppDbContext
+    protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.HasDefaultSchema("Identity");
+            base.OnModelCreating(builder);
+        }
+
+    
+
+
+    Запускать с Командной строки или Терминала              (Создание миграции)
+    dotnet ef migrations add <Имя миграции> 
+        -c AppDbContext                  [ Имя класса контекста ] 
+        -o Data/Migrations/AppMigrations [ Путь к файлам минрации ]
+
+    Запускать с Командной строки или Терминала              (Приминение миграции)
+    dotnet ef database update 
+        -c PersistedGrantDbContext       [ Имя класса контекста ] 

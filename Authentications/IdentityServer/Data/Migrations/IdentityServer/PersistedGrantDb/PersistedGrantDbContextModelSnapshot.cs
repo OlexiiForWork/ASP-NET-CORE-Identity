@@ -15,6 +15,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Tokens")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -66,8 +67,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
 
                     b.HasIndex("Expiration");
 
-                    b.ToTable(schema: "Tokens",
-                              name: "DeviceCodes");
+                    b.ToTable("DeviceCodes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.PersistedGrant", b =>
@@ -120,8 +120,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
 
                     b.HasIndex("SubjectId", "SessionId", "Type");
 
-                    b.ToTable(schema: "Tokens",
-                              name: "PersistedGrants");
+                    b.ToTable("PersistedGrants");
                 });
 #pragma warning restore 612, 618
         }

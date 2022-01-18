@@ -7,11 +7,12 @@ namespace IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema("Tokens");
+            migrationBuilder.EnsureSchema(
+                name: "Tokens");
 
             migrationBuilder.CreateTable(
-                schema: "Tokens",
                 name: "DeviceCodes",
+                schema: "Tokens",
                 columns: table => new
                 {
                     UserCode = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
@@ -30,8 +31,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Tokens",
                 name: "PersistedGrants",
+                schema: "Tokens",
                 columns: table => new
                 {
                     Key = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
@@ -85,14 +86,12 @@ namespace IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                schema: "Tokens",
-                name: "DeviceCodes");
+                name: "DeviceCodes",
+                schema: "Tokens");
 
             migrationBuilder.DropTable(
-                schema: "Tokens",
-                name: "PersistedGrants");
-
-            migrationBuilder.DropSchema("Tokens");
+                name: "PersistedGrants",
+                schema: "Tokens");
         }
     }
 }

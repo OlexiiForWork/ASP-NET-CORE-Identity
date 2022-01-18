@@ -10,13 +10,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IdentityServer.Data.Migrations.AppMigrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220111141649_init")]
+    [Migration("20220118154122_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Identity")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);

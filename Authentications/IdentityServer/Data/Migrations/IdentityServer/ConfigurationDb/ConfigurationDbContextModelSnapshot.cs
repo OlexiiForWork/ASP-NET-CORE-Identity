@@ -15,6 +15,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Configs")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -66,8 +67,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiResources");
+                    b.ToTable("ApiResources");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>
@@ -89,8 +89,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiResourceClaims");
+                    b.ToTable("ApiResourceClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceProperty", b =>
@@ -117,8 +116,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiResourceProperties");
+                    b.ToTable("ApiResourceProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceScope", b =>
@@ -140,8 +138,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiResourceScopes");
+                    b.ToTable("ApiResourceScopes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceSecret", b =>
@@ -178,8 +175,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiResourceSecrets");
+                    b.ToTable("ApiResourceSecrets");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScope", b =>
@@ -219,8 +215,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiScopes");
+                    b.ToTable("ApiScopes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeClaim", b =>
@@ -242,8 +237,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ScopeId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiScopeClaims");
+                    b.ToTable("ApiScopeClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeProperty", b =>
@@ -270,8 +264,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ScopeId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ApiScopeProperties");
+                    b.ToTable("ApiScopeProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.Client", b =>
@@ -429,8 +422,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("ClientId")
                         .IsUnique();
 
-                    b.ToTable(schema: "Configs",
-                              name: "Clients");
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientClaim", b =>
@@ -457,8 +449,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientClaims");
+                    b.ToTable("ClientClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientCorsOrigin", b =>
@@ -480,8 +471,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientCorsOrigins");
+                    b.ToTable("ClientCorsOrigins");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientGrantType", b =>
@@ -503,8 +493,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientGrantTypes");
+                    b.ToTable("ClientGrantTypes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientIdPRestriction", b =>
@@ -526,8 +515,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientIdPRestrictions");
+                    b.ToTable("ClientIdPRestrictions");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
@@ -549,8 +537,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientPostLogoutRedirectUris");
+                    b.ToTable("ClientPostLogoutRedirectUris");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientProperty", b =>
@@ -577,8 +564,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientProperties");
+                    b.ToTable("ClientProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientRedirectUri", b =>
@@ -600,8 +586,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientRedirectUris");
+                    b.ToTable("ClientRedirectUris");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientScope", b =>
@@ -623,8 +608,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientScopes");
+                    b.ToTable("ClientScopes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientSecret", b =>
@@ -661,8 +645,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "ClientSecrets");
+                    b.ToTable("ClientSecrets");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResource", b =>
@@ -711,8 +694,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable(schema: "Configs",
-                              name: "IdentityResources");
+                    b.ToTable("IdentityResources");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceClaim", b =>
@@ -734,8 +716,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("IdentityResourceId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "IdentityResourceClaims");
+                    b.ToTable("IdentityResourceClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceProperty", b =>
@@ -762,8 +743,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("IdentityResourceId");
 
-                    b.ToTable(schema: "Configs",
-                              name: "IdentityResourceProperties");
+                    b.ToTable("IdentityResourceProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>

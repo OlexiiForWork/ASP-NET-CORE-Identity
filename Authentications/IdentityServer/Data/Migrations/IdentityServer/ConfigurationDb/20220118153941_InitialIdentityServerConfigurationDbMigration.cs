@@ -8,11 +8,12 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema("Configs");
+            migrationBuilder.EnsureSchema(
+                name: "Configs");
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiResources",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -34,8 +35,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiScopes",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -54,8 +55,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "Clients",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -110,8 +111,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "IdentityResources",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -133,8 +134,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiResourceClaims",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -155,8 +156,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiResourceProperties",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -178,8 +179,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiResourceScopes",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -200,8 +201,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiResourceSecrets",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -226,8 +227,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiScopeClaims",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -248,8 +249,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ApiScopeProperties",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -271,8 +272,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientClaims",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -294,8 +295,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientCorsOrigins",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -316,8 +317,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientGrantTypes",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -338,8 +339,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientIdPRestrictions",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -360,8 +361,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientPostLogoutRedirectUris",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -382,8 +383,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientProperties",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -405,8 +406,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientRedirectUris",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -427,8 +428,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientScopes",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -449,8 +450,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "ClientSecrets",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -475,8 +476,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "IdentityResourceClaims",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -497,8 +498,8 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Configs",
                 name: "IdentityResourceProperties",
+                schema: "Configs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -653,90 +654,88 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiResourceClaims");
+                name: "ApiResourceClaims",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiResourceProperties");
+                name: "ApiResourceProperties",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiResourceScopes");
+                name: "ApiResourceScopes",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiResourceSecrets");
+                name: "ApiResourceSecrets",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiScopeClaims");
+                name: "ApiScopeClaims",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiScopeProperties");
+                name: "ApiScopeProperties",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientClaims");
+                name: "ClientClaims",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientCorsOrigins");
+                name: "ClientCorsOrigins",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientGrantTypes");
+                name: "ClientGrantTypes",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientIdPRestrictions");
+                name: "ClientIdPRestrictions",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientPostLogoutRedirectUris");
+                name: "ClientPostLogoutRedirectUris",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientProperties");
+                name: "ClientProperties",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientRedirectUris");
+                name: "ClientRedirectUris",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientScopes");
+                name: "ClientScopes",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ClientSecrets");
+                name: "ClientSecrets",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "IdentityResourceClaims");
+                name: "IdentityResourceClaims",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "IdentityResourceProperties");
+                name: "IdentityResourceProperties",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiResources");
+                name: "ApiResources",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "ApiScopes");
+                name: "ApiScopes",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "Clients");
+                name: "Clients",
+                schema: "Configs");
 
             migrationBuilder.DropTable(
-                schema: "Configs",
-                name: "IdentityResources");
-
-            migrationBuilder.DropSchema("Configs");
+                name: "IdentityResources",
+                schema: "Configs");
         }
     }
 }

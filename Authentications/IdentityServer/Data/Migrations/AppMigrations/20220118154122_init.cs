@@ -8,11 +8,12 @@ namespace IdentityServer.Data.Migrations.AppMigrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema("Identity");
+            migrationBuilder.EnsureSchema(
+                name: "Identity");
 
             migrationBuilder.CreateTable(
-                schema: "Identity",
                 name: "AspNetRoles",
+                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
@@ -26,8 +27,8 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Identity",
                 name: "AspNetUsers",
+                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
@@ -52,8 +53,8 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Identity",
                 name: "AspNetRoleClaims",
+                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -75,8 +76,8 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Identity",
                 name: "AspNetUserClaims",
+                schema: "Identity",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -98,8 +99,8 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Identity",
                 name: "AspNetUserLogins",
+                schema: "Identity",
                 columns: table => new
                 {
                     LoginProvider = table.Column<string>(type: "text", nullable: false),
@@ -120,8 +121,8 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Identity",
                 name: "AspNetUserRoles",
+                schema: "Identity",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "text", nullable: false),
@@ -147,8 +148,8 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                 });
 
             migrationBuilder.CreateTable(
-                schema: "Identity",
                 name: "AspNetUserTokens",
+                schema: "Identity",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "text", nullable: false),
@@ -169,45 +170,45 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                 });
 
             migrationBuilder.CreateIndex(
-                schema: "Identity",
                 name: "IX_AspNetRoleClaims_RoleId",
+                schema: "Identity",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                schema: "Identity",
                 name: "RoleNameIndex",
+                schema: "Identity",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                schema: "Identity",
                 name: "IX_AspNetUserClaims_UserId",
+                schema: "Identity",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                schema: "Identity",
                 name: "IX_AspNetUserLogins_UserId",
+                schema: "Identity",
                 table: "AspNetUserLogins",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                schema: "Identity",
                 name: "IX_AspNetUserRoles_RoleId",
+                schema: "Identity",
                 table: "AspNetUserRoles",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                schema: "Identity",
                 name: "EmailIndex",
+                schema: "Identity",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                schema: "Identity",
                 name: "UserNameIndex",
+                schema: "Identity",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
@@ -242,8 +243,6 @@ namespace IdentityServer.Data.Migrations.AppMigrations
             migrationBuilder.DropTable(
                 name: "AspNetUsers",
                 schema: "Identity");
-
-            migrationBuilder.DropSchema("Identity");
         }
     }
 }

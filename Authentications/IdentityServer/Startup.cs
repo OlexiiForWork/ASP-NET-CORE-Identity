@@ -48,6 +48,7 @@ namespace IdentityServer
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireUppercase = false;
                 config.SignIn.RequireConfirmedEmail = false;
+                config.User.AllowedUserNameCharacters = "йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             })
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
@@ -56,7 +57,7 @@ namespace IdentityServer
             {
                 config.Cookie.Name = "IdentityServer.Cookie";
                 config.LoginPath = "/Auth/Login";
-                //config.LogoutPath = "/Auth/Logout";
+                config.LogoutPath = "/Auth/Logout";
             });
 
             var filePath = Path.Combine(_env.ContentRootPath, "is_sert.pfx");

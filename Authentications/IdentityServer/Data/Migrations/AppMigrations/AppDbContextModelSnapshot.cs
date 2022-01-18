@@ -15,6 +15,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Identity")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -42,9 +43,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex");
 
-                    b.ToTable(schema: "Identity",
-                              name:"AspNetRoles");
-
+                    b.ToTable("AspNetRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -68,8 +67,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable(schema: "Identity",
-                              name: "AspNetRoleClaims");
+                    b.ToTable("AspNetRoleClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
@@ -133,8 +131,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable(schema: "Identity",
-                              name: "AspNetUsers");
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -158,8 +155,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable(schema: "Identity",
-                              name: "AspNetUserClaims");
+                    b.ToTable("AspNetUserClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -181,8 +177,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable(schema: "Identity",
-                              name: "AspNetUserLogins");
+                    b.ToTable("AspNetUserLogins");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -197,8 +192,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable(schema: "Identity",
-                              name: "AspNetUserRoles");
+                    b.ToTable("AspNetUserRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -217,8 +211,7 @@ namespace IdentityServer.Data.Migrations.AppMigrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable(schema: "Identity",
-                              name: "AspNetUserTokens");
+                    b.ToTable("AspNetUserTokens");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

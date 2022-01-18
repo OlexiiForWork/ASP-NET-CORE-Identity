@@ -9,7 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace IdentityServer
@@ -57,6 +59,8 @@ namespace IdentityServer
                 //config.LogoutPath = "/Auth/Logout";
             });
 
+            var filePath = Path.Combine(_env.ContentRootPath, "is_sert.pfx");
+            var certificate = new X509Certificate2(filePath, "password");
 
             services.AddIdentityServer()
                 .AddAspNetIdentity<IdentityUser>()
@@ -72,12 +76,21 @@ namespace IdentityServer
                         sql => sql.MigrationsAssembly(assembly));
                     options.DefaultSchema = "Tokens";//Нужно если переопределена схема
                 })
-                //или
-                ////.AddInMemoryIdentityResources(Configuration.GetIdentityResources())//КОГДА ДОБАВЛЯЮ КАКИЕТО ПРОБЛЕМЫ
-                //.AddInMemoryApiResources(Configuration.GetApis())
-                //.AddInMemoryClients(Configuration.GetClients())
-                //.AddInMemoryApiScopes(Configuration.GetScopes())
-                .AddDeveloperSigningCredential();
+                .AddSigningCredential(certificate);
+            //или
+            //.AddInMemoryIdentityResources(Configuration.GetIdentityResources())//КОГДА ДОБАВЛЯЮ КАКИЕТО ПРОБЛЕМЫ
+            //.AddInMemoryApiResources(Configuration.GetApis())
+            //.AddInMemoryClients(Configuration.GetClients())
+            //.AddInMemoryApiScopes(Configuration.GetScopes())
+            //.AddDeveloperSigningCredential();
+
+            services.AddAuthentication()
+                    .AddGoogle(config =>
+                    {
+                        config.ClientId = "1070737759616-ofn5kqubjsv76ttompddidrc05t8cqpq.apps.googleusercontent.com";
+                        config.ClientSecret = "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";
+                    });
+
 
             services.AddControllersWithViews();
         }

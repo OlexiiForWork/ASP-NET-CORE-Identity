@@ -22,16 +22,16 @@ namespace IdentityServer
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {
-                var userManager = scope.ServiceProvider
-                    .GetRequiredService<UserManager<IdentityUser>>();
-                var user = new IdentityUser("bob");
+                //var userManager = scope.ServiceProvider
+                //    .GetRequiredService<UserManager<IdentityUser>>();
+                //var user = new IdentityUser("bob");
 
-                userManager.CreateAsync(user, "password").GetAwaiter().GetResult();
-                userManager.AddClaimAsync(user, new Claim("rc.garndma", "big.cookie"))
-                            .GetAwaiter().GetResult();
-                userManager.AddClaimAsync(user,
-                            new Claim("rc.api.garndma", "big.api.cookie"))
-                            .GetAwaiter().GetResult();
+                //userManager.CreateAsync(user, "password").GetAwaiter().GetResult();
+                //userManager.AddClaimAsync(user, new Claim("rc.garndma", "big.cookie"))
+                //            .GetAwaiter().GetResult();
+                //userManager.AddClaimAsync(user,
+                //            new Claim("rc.api.garndma", "big.api.cookie"))
+                //            .GetAwaiter().GetResult();
 
 
                 scope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>()
@@ -49,7 +49,7 @@ namespace IdentityServer
                     }
                     context.SaveChanges();
                 }
-                
+
                 if (!context.ApiScopes.Any())
                 {
                     foreach (var client in Configuration.GetScopes())

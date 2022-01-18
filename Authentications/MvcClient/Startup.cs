@@ -27,7 +27,7 @@ namespace MvcClient
                     config.SaveTokens = true;
 
                     config.ResponseType = "code";
-                    //config.SignedOutCallbackPath = "/Home/Index";
+                    config.SignedOutCallbackPath = "/Home/Index";
 
                     // configure cookie claim mapping
                     config.ClaimActions.DeleteClaim("amr");

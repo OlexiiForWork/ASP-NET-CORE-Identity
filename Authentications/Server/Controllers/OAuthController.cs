@@ -56,8 +56,6 @@ namespace Server.Controllers
 
             var secretBytes = Encoding.UTF8.GetBytes(Constants.Secret);
             var key = new SymmetricSecurityKey(secretBytes);
-            //var key = new AsymmetricSecurityKey();
-
 
             var algoritm = SecurityAlgorithms.HmacSha256;
 

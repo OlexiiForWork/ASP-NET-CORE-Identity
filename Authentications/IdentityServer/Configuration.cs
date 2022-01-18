@@ -61,7 +61,7 @@ namespace IdentityServer
                     //RequirePkce = true,
 
                     RedirectUris = { "https://localhost:44322/signin-oidc" },
-                    //PostLogoutRedirectUris = { "https://localhost:44322/Home/Index" },
+                    PostLogoutRedirectUris = { "https://localhost:44322/Home/Index" },
 
                     AllowedScopes = {
                         "ApiOneScopes",

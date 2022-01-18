@@ -90,3 +90,10 @@ JavascriptClient 14-15 серия
     Запускать с Командной строки или Терминала              (Приминение миграции)
     dotnet ef database update 
         -c PersistedGrantDbContext       [ Имя класса контекста ] 
+
+
+    Microsoft.AspNetCore.Authentication.Facebook Расшырение для использования Facebook
+    Microsoft.AspNetCore.Authentication.Google   Расшырение для использования Google.
+    Microsoft.AspNetCore.Authentication.Twitter
+    Microsoft.AspNetCore.Authentication.WsFederation
+    Microsoft.AspNetCore.Authentication.MicrosoftAccount

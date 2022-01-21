@@ -58,7 +58,7 @@ namespace IdentityServer
                     ClientSecrets = { new Secret("client_secret_mvc".ToSha256()) },
 
                     AllowedGrantTypes = GrantTypes.Code,//юзер участвует в комуникации
-                    //RequirePkce = true,
+                    RequirePkce = true,
 
                     RedirectUris = { "https://localhost:44322/signin-oidc" },
                     PostLogoutRedirectUris = { "https://localhost:44322/Home/Index" },
